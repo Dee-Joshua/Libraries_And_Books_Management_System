@@ -18,7 +18,8 @@ namespace LABMS.Domain.entities
         [Required]
         [MaxLength(50)]
         public string? LibraryName { get; set; }
-
+        [StringLength(200,ErrorMessage="Library Details cannot be more than 200 words")]
         public string? LibraryDetails { get; set; }
+        public Address Address {get; set;}
     }
 }
