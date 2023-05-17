@@ -15,17 +15,19 @@ namespace LABMS.Domain.entities
 
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
-        public virtual Member? Member { get; set; }
 
         [ForeignKey(nameof(Book))]
         public int Isbn { get; set; }
-        public virtual Book? Book { get; set; }
 
         [Required(ErrorMessage = "The date requested is required.")]
         public DateTime DateRequested { get; set; }
 
         [Required(ErrorMessage = "The date located is required.")]
         public DateTime DateLocated { get; set; }
+
+        // Navigation property for the one-to-many relationship
+        public virtual Member? Member { get; set; }
+        public virtual Book? Book { get; set; }
     }
 
 }

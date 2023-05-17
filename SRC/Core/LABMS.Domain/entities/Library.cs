@@ -12,14 +12,19 @@ namespace LABMS.Domain.entities
     {
         [Key]
         public int LibraryId { get; set; }
+        
         [ForeignKey(nameof(Address))]
         public int AddressId { get; set; }
 
         [Required]
         [MaxLength(50)]
         public string? LibraryName { get; set; }
+        
         [StringLength(200,ErrorMessage="Library Details cannot be more than 200 words")]
         public string? LibraryDetails { get; set; }
-        public Address Address {get; set;}
+
+        // Navigation property for the one-to-many relationship
+        public Address? Address {get; set;}
+        public virtual ICollection<Books_At_Library>? Books_At_Libraries { get; set; }
     }
 }

@@ -41,5 +41,4 @@ namespace LABMS.Domain.entities
         [ReadOnly(true)]
         public double YourSaving { get; set; }
     }
-
 }

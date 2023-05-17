@@ -31,6 +31,10 @@ namespace LABMS.Domain.entities
         [Required(ErrorMessage = "Country is required.")]
         [StringLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
         public string? Country { get; set; }
+
+        // Navigation property for the one-to-many relationship
+        public virtual ICollection<Member>? Members { get; set; }
+        public virtual ICollection<Library>? Libraries { get; set; }
     }
 
 }

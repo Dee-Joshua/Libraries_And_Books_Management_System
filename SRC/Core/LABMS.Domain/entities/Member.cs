@@ -37,5 +37,6 @@ namespace LABMS.Domain.entities
 
         // Navigation property for the one-to-many relationship
         public virtual Address? Address { get; set; }
+        public virtual ICollection<MemberRequest>? MemberRequests { get; set; }
     }
 }

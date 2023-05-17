@@ -12,17 +12,15 @@ namespace LABMS.Domain.entities
     {
         // Composite primary key consisting of the foreign keys
         [Key, Column(Order = 0)]
+        [ForeignKey(nameof(Author))]
         public int AuthorId { get; set; }
 
         [Key, Column(Order = 1)]
+        [ForeignKey(nameof(Book))]
         public int Isbn { get; set; }
 
-
-        // Foreign key properties referencing the related entities
-        [ForeignKey(nameof(Author))]
+        // Navigation property for the many-to-many relationship        
         public virtual Author? Author { get; set; }
-
-        [ForeignKey(nameof(Book))]
         public virtual Book? Book { get; set; }
     }
 }

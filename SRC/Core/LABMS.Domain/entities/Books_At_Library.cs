@@ -19,6 +19,7 @@ namespace LABMS.Domain.entities
         [Range(0, int.MaxValue, ErrorMessage = "Quantity cannot be negative.")]
         public int Quantity_In_Stock { get; set; }
 
+        // Navigation property for the one-to-many relationship
         public virtual Library? Library { get; set; }
         public virtual Book? Book { get; set; }
     }

@@ -20,6 +20,9 @@ namespace LABMS.Domain.entities
         [DataType(DataType.Date)]
         public DateTime? Date_Of_Publication { get; set; }
 
+        // Navigation property for the one-to-many relationship
+        public virtual ICollection<MemberRequest>? MemberRequests { get; set; }
+        public virtual ICollection<Books_At_Library>? Books_At_Libraries { get; set; }
         // Navigation property for the many-to-many relationship
         public virtual ICollection<Books_By_Author>? Books_By_Authors { get; set; }
         public virtual ICollection<Books_By_Category>? Books_By_Categories { get; set; }
