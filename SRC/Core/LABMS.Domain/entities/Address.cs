@@ -22,7 +22,7 @@ namespace LABMS.Domain.entities
 
         [Required(ErrorMessage = "Area/locality is required.")]
         [StringLength(50, ErrorMessage = "Area/locality cannot exceed 50 characters.")]
-        public string? AreaLocalitty { get; set; }
+        public string? AreaLocality { get; set; }
 
         [Required(ErrorMessage = "State is required.")]
         [StringLength(50, ErrorMessage = "State cannot exceed 50 characters.")]
