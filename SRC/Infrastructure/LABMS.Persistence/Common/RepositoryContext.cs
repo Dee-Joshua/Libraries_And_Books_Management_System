@@ -25,5 +25,11 @@ namespace LABMS.Persistence.Common
         public DbSet<Library> Libraries { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<MemberRequest> MemberRequests { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Books_By_Author>().HasKey(x => new { x.AuthorId });
+            modelBuilder.Entity<Books_By_Author>().HasKey(x=>new { x.Isbn });
+        }
     }
 }
