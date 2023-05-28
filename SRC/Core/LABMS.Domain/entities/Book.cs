@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LABMS.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Domain.entities
 {
-    public class Book
+    public class Book : BaseEntity
     {
         [Key]
         public int Isbn { get; set; }

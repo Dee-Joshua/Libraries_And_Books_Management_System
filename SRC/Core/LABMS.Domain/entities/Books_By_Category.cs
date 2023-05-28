@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LABMS.Domain.Common;
 
 namespace LABMS.Domain.entities
 {
-    public class Books_By_Category
+    public class Books_By_Category : BaseEntity
     {
         // Composite primary key consisting of the foreign keys
         [Key, Column(Order = 0)]
