@@ -30,6 +30,10 @@ namespace LABMS.Persistence.Common
         {
             modelBuilder.Entity<Books_By_Author>().HasKey(x => new { x.AuthorId });
             modelBuilder.Entity<Books_By_Author>().HasKey(x=>new { x.Isbn });
+            modelBuilder.Entity<Books_By_Category>().HasKey(x => new { x.CategoryId });
+            modelBuilder.Entity<Books_By_Category>().HasKey(x => new { x.Isbn });
+            modelBuilder.Entity<Books_At_Library>().HasKey(x => new { x.LibraryId });
+            modelBuilder.Entity<Books_At_Library>().HasKey(x => new { x.Isbn });
         }
     }
 }
