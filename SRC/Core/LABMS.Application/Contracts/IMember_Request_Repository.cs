@@ -10,7 +10,7 @@ namespace LABMS.Application.Contracts
     public interface IMember_Request_Repository
     {
         Task<IEnumerable<MemberRequest>> GetAllMemberRequestsAsync(bool trackChanges);
-        Task<MemberRequest> GetMemberRequestByIdAsync(int Id, bool trackChanges);
+        Task<MemberRequest> GetMemberRequestByIdAsync(int id, bool trackChanges);
         void CreateMemberRequest(MemberRequest memberRequest);
         void DeleteMemberRequest(MemberRequest memberRequest);
     }

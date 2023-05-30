@@ -10,8 +10,8 @@ namespace LABMS.Application.Contracts
     public interface IBookRepository
     {
         Task<IEnumerable<Book>> GetAllBooksAsync(bool trackChanges);
-        Task<Book> GetBookByIdAsync(int Id, bool trackChanges);
-        Task<Book> GetBookByTitle(string BookTitle, bool trackchanges);
+        Task<Book> GetBookByIdAsync(int id, bool trackChanges);
+        Task<Book> GetBookByTitle(string bookTitle, bool trackChanges);
         void CreateBook(Book book);
         void DeleteBook(Book book);
     }

@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\LABMS.Application\LABMS.Application.csproj" />
     <ProjectReference Include="..\..\Core\LABMS.Domain\LABMS.Domain.csproj" />
   </ItemGroup>

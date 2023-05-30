@@ -9,9 +9,9 @@ namespace LABMS.Application.Contracts
 {
     public interface IBooks_At_Library_Repository
     {
-        Task<IEnumerable<Books_At_Library>> GetAllBooks_At_LibrariesAsync(bool trackChanges);
-        Task<Books_At_Library> GetBooks_At_LibraryByIdAsync(int Id, bool trackChanges);
-        Task<Books_At_Library> GetBooks_At_LibraryByQuantity(int Quantity_In_Stock, bool trackchanges);
+        Task<IEnumerable<Books_At_Library>> GetAllBooks_At_LibrariesAsync( bool trackChanges);
+        Task<Books_At_Library> GetBooks_At_LibraryByIdAsync(int isbn, int libraryId, bool trackChanges);
+        Task<IEnumerable<Books_At_Library>> GetBooks_At_LibraryByQuantity(int min_Quantity_In_Stock, bool trackChanges);
         void CreateBooks_At_Library(Books_At_Library books_At_Library);
         void DeleteBooks_At_Library(Books_At_Library books_At_Library);
     }

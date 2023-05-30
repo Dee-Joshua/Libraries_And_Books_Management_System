@@ -10,8 +10,8 @@ namespace LABMS.Application.Contracts
     public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges);
-        Task<Category> GetCategoryByIdAsync(int Id, bool trackChanges);
-        Task<Category> GetCategoryByName(string CategoryName, bool trackchanges);
+        Task<Category> GetCategoryByIdAsync(int id, bool trackChanges);
+        Task<Category> GetCategoryByName(string categoryName, bool trackChanges);
         void CreateCategory(Category category);
         void DeleteCategory(Category category);
     }

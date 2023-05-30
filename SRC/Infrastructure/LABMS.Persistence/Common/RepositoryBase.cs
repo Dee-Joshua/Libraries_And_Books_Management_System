@@ -39,9 +39,6 @@ namespace LABMS.Persistence.Common
 
         }
 
-        public void Update(T entity)
-        {
-            RepositoryContext.Set<T>().Update(entity);
-        }
+        public void Update(T entity) => RepositoryContext.Set<T>().Update(entity);
     }
 }

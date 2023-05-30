@@ -10,8 +10,8 @@ namespace LABMS.Application.Contracts
     public interface ILibraryRepository
     {
         Task<IEnumerable<Library>> GetAllLibrariesAsync(bool trackChanges);
-        Task<Library> GetLibraryByIdAsync(int Id, bool trackChanges);
-        Task<Library> GetLibraryByName(string LibraryName, bool trackchanges);
+        Task<Library> GetLibraryByIdAsync(int id, bool trackChanges);
+        Task<Library> GetLibraryByName(string libraryName, bool trackChanges);
         void CreateLibrary(Library library);
         void DeleteLibrary(Library library);
     }
