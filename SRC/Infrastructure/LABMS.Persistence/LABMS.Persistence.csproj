@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\Core\LABMS.Domain\LABMS.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

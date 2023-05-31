@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\..\Infrastructure\LABMS.Persistence\LABMS.Persistence.csproj" />
   </ItemGroup>
 
