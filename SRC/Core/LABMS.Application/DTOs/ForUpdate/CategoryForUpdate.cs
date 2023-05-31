@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForUpdate
 {
     public class CategoryForUpdate
     {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForCreation
 {
     public class BookForCreation
     {

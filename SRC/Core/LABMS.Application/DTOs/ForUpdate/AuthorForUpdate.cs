@@ -5,14 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForUpdate
 {
-    public class AuthorDto
+    public class AuthorForUpdate
     {
+        [Key]
         public int AuthorId { get; set; }
-
-        public string? FirstName { get; set; }
-
-        public string? LastName { get; set; }
     }
 }

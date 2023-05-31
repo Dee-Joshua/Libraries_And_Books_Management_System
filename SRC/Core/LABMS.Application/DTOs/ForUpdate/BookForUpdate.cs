@@ -6,14 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForUpdate
 {
-    public class BookDto
+    public class BookForUpdate
     {
+        [Key]
         public int Isbn { get; set; }
-
-        public string? BookTitle { get; set; }
-
-        public DateTime? Date_Of_Publication { get; set; }
     }
 }

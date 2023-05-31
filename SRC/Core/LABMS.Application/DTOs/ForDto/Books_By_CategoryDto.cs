@@ -7,16 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForDto
 {
-    public class LibraryDto
+    public record Books_By_CategoryDto
     {
-        public int LibraryId { get; set; }
+        public int CategoryId { get; init; }
 
-        public int AddressId { get; set; }
-
-        public string? LibraryName { get; set; }
-
-        public string? LibraryDetails { get; set; }
+        public int Isbn { get; init; }
     }
 }

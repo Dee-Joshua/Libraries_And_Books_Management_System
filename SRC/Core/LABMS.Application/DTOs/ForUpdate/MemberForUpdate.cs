@@ -7,23 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForUpdate
 {
-    public class MemberForCreation
+    public class MemberForUpdate
     {
+        [Key]
+        public int MemberId { get; set; }
+
         [ForeignKey(nameof(Address))]
         public int Member_AddressId { get; set; }
 
         [Required(ErrorMessage = "Gender is required.")]
         public string? Gender { get; set; }
-
-        [Required(ErrorMessage = "First name is required.")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "First name should be between 2 and 50 characters.")]
-        public string? FirstName { get; set; }
-
-        [Required(ErrorMessage = "Last name is required.")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "Last name should be between 2 and 50 characters.")]
-        public string? LastName { get; set; }
 
         [Required(ErrorMessage = "Phone number is required.")]
         [DataType(DataType.PhoneNumber)]

@@ -7,13 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LABMS.Application.DTOs
+namespace LABMS.Application.DTOs.ForCreation
 {
-    public class MemberRequestForUpdate
+    public class MemberRequestForCreation
     {
-        [Key]
-        public int RequestId { get; set; }
-
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
 
