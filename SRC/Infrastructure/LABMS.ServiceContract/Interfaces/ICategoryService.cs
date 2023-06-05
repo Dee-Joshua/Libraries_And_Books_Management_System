@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace LABMS.ServiceContract.Interfaces
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
+
     }
 }

@@ -11,10 +11,10 @@ namespace LABMS.Domain.entities
     public class Address : BaseEntity
     {
         [Key]
-        public int AddressId { get; set; }
+        public int BaseId { get; set; }
 
         [Required(ErrorMessage = "Building number is required.")]
-        [StringLength(10, ErrorMessage = "Building number cannot exceed 10 characters.")]
+        [StringLength(20, ErrorMessage = "Building number cannot exceed 10 characters.")]
         public string? BuildingNumber { get; set; }
 
         [Required(ErrorMessage = "Street name is required.")]

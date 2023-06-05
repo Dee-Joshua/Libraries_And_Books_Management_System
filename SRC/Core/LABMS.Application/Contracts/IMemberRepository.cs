@@ -14,6 +14,7 @@ namespace LABMS.Application.Contracts
         Task<Member> GetMemberByPhoneNumber(int phoneNumber, bool trackChanges);
         Task<Member> GetMemberByEmail(string emailAddress, bool trackChanges);
         void CreateMember(Member member);
+        void UpdateMember(Member member);
         void DeleteMember(Member member);
     }
 }

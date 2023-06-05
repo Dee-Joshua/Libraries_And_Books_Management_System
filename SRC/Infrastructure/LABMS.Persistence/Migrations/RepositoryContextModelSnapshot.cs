@@ -24,11 +24,11 @@ namespace LABMS.Persistence.Migrations
 
             modelBuilder.Entity("LABMS.Domain.entities.Address", b =>
                 {
-                    b.Property<int>("AddressId")
+                    b.Property<int>("BaseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BaseId"));
 
                     b.Property<string>("AreaLocality")
                         .IsRequired()
@@ -37,8 +37,8 @@ namespace LABMS.Persistence.Migrations
 
                     b.Property<string>("BuildingNumber")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Country")
                         .IsRequired()
@@ -67,9 +67,121 @@ namespace LABMS.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("BaseId");
 
                     b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            BaseId = 1,
+                            AreaLocality = "Area 1",
+                            BuildingNumber = "Building 1",
+                            Country = "Country 1",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 1",
+                            StreetName = "Street 1"
+                        },
+                        new
+                        {
+                            BaseId = 2,
+                            AreaLocality = "Area 2",
+                            BuildingNumber = "Building 2",
+                            Country = "Country 2",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 2",
+                            StreetName = "Street 2"
+                        },
+                        new
+                        {
+                            BaseId = 3,
+                            AreaLocality = "Area 3",
+                            BuildingNumber = "Building 3",
+                            Country = "Country 3",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 3",
+                            StreetName = "Street 3"
+                        },
+                        new
+                        {
+                            BaseId = 4,
+                            AreaLocality = "Area 4",
+                            BuildingNumber = "Building 4",
+                            Country = "Country 4",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 4",
+                            StreetName = "Street 4"
+                        },
+                        new
+                        {
+                            BaseId = 5,
+                            AreaLocality = "Area 5",
+                            BuildingNumber = "Building 5",
+                            Country = "Country 5",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 5",
+                            StreetName = "Street 5"
+                        },
+                        new
+                        {
+                            BaseId = 6,
+                            AreaLocality = "Area 6",
+                            BuildingNumber = "Building 6",
+                            Country = "Country 6",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 6",
+                            StreetName = "Street 6"
+                        },
+                        new
+                        {
+                            BaseId = 7,
+                            AreaLocality = "Area 7",
+                            BuildingNumber = "Building 7",
+                            Country = "Country 7",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 7",
+                            StreetName = "Street 7"
+                        },
+                        new
+                        {
+                            BaseId = 8,
+                            AreaLocality = "Area 8",
+                            BuildingNumber = "Building 8",
+                            Country = "Country 8",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 8",
+                            StreetName = "Street 8"
+                        },
+                        new
+                        {
+                            BaseId = 9,
+                            AreaLocality = "Area 9",
+                            BuildingNumber = "Building 9",
+                            Country = "Country 9",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 9",
+                            StreetName = "Street 9"
+                        },
+                        new
+                        {
+                            BaseId = 10,
+                            AreaLocality = "Area 10",
+                            BuildingNumber = "Building 10",
+                            Country = "Country 10",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = "State 10",
+                            StreetName = "Street 10"
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.AmazonBooks", b =>
@@ -125,6 +237,148 @@ namespace LABMS.Persistence.Migrations
                     b.HasKey("Isbn");
 
                     b.ToTable("AmazonBooks");
+
+                    b.HasData(
+                        new
+                        {
+                            Isbn = 1,
+                            AmazonPrice = 9.9900000000000002,
+                            Amazon_Star_Rating = 1,
+                            Author = "Author 1",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 4, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7890),
+                            ListPrice = 10.99,
+                            Publisher = "Publisher 1",
+                            Title = "Book 1",
+                            YourSaving = 1.0
+                        },
+                        new
+                        {
+                            Isbn = 2,
+                            AmazonPrice = 19.98,
+                            Amazon_Star_Rating = 2,
+                            Author = "Author 2",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 3, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7948),
+                            ListPrice = 21.98,
+                            Publisher = "Publisher 2",
+                            Title = "Book 2",
+                            YourSaving = 2.0
+                        },
+                        new
+                        {
+                            Isbn = 3,
+                            AmazonPrice = 29.969999999999999,
+                            Amazon_Star_Rating = 3,
+                            Author = "Author 3",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 2, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7951),
+                            ListPrice = 32.969999999999999,
+                            Publisher = "Publisher 3",
+                            Title = "Book 3",
+                            YourSaving = 3.0
+                        },
+                        new
+                        {
+                            Isbn = 4,
+                            AmazonPrice = 39.960000000000001,
+                            Amazon_Star_Rating = 4,
+                            Author = "Author 4",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 1, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7954),
+                            ListPrice = 43.960000000000001,
+                            Publisher = "Publisher 4",
+                            Title = "Book 4",
+                            YourSaving = 4.0
+                        },
+                        new
+                        {
+                            Isbn = 5,
+                            AmazonPrice = 49.950000000000003,
+                            Amazon_Star_Rating = 5,
+                            Author = "Author 5",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 31, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7956),
+                            ListPrice = 54.950000000000003,
+                            Publisher = "Publisher 5",
+                            Title = "Book 5",
+                            YourSaving = 5.0
+                        },
+                        new
+                        {
+                            Isbn = 6,
+                            AmazonPrice = 59.939999999999998,
+                            Amazon_Star_Rating = 0,
+                            Author = "Author 6",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 30, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7960),
+                            ListPrice = 65.939999999999998,
+                            Publisher = "Publisher 6",
+                            Title = "Book 6",
+                            YourSaving = 6.0
+                        },
+                        new
+                        {
+                            Isbn = 7,
+                            AmazonPrice = 69.930000000000007,
+                            Amazon_Star_Rating = 1,
+                            Author = "Author 7",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 29, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7962),
+                            ListPrice = 76.930000000000007,
+                            Publisher = "Publisher 7",
+                            Title = "Book 7",
+                            YourSaving = 7.0
+                        },
+                        new
+                        {
+                            Isbn = 8,
+                            AmazonPrice = 79.920000000000002,
+                            Amazon_Star_Rating = 2,
+                            Author = "Author 8",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 28, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7965),
+                            ListPrice = 87.920000000000002,
+                            Publisher = "Publisher 8",
+                            Title = "Book 8",
+                            YourSaving = 8.0
+                        },
+                        new
+                        {
+                            Isbn = 9,
+                            AmazonPrice = 89.909999999999997,
+                            Amazon_Star_Rating = 3,
+                            Author = "Author 9",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 27, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7968),
+                            ListPrice = 98.909999999999997,
+                            Publisher = "Publisher 9",
+                            Title = "Book 9",
+                            YourSaving = 9.0
+                        },
+                        new
+                        {
+                            Isbn = 10,
+                            AmazonPrice = 99.900000000000006,
+                            Amazon_Star_Rating = 4,
+                            Author = "Author 10",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 26, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(7971),
+                            ListPrice = 109.90000000000001,
+                            Publisher = "Publisher 10",
+                            Title = "Book 10",
+                            YourSaving = 10.0
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Author", b =>
@@ -160,6 +414,88 @@ namespace LABMS.Persistence.Migrations
                     b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            AuthorId = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 1",
+                            LastName = "Last Name 1"
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 2",
+                            LastName = "Last Name 2"
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 3",
+                            LastName = "Last Name 3"
+                        },
+                        new
+                        {
+                            AuthorId = 4,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 4",
+                            LastName = "Last Name 4"
+                        },
+                        new
+                        {
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 5",
+                            LastName = "Last Name 5"
+                        },
+                        new
+                        {
+                            AuthorId = 6,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 6",
+                            LastName = "Last Name 6"
+                        },
+                        new
+                        {
+                            AuthorId = 7,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 7",
+                            LastName = "Last Name 7"
+                        },
+                        new
+                        {
+                            AuthorId = 8,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 8",
+                            LastName = "Last Name 8"
+                        },
+                        new
+                        {
+                            AuthorId = 9,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 9",
+                            LastName = "Last Name 9"
+                        },
+                        new
+                        {
+                            AuthorId = 10,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "First Name 10",
+                            LastName = "Last Name 10"
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Book", b =>
@@ -193,6 +529,88 @@ namespace LABMS.Persistence.Migrations
                     b.HasKey("Isbn");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Isbn = 1,
+                            BookTitle = "Book Title 1",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 4, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8678)
+                        },
+                        new
+                        {
+                            Isbn = 2,
+                            BookTitle = "Book Title 2",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 3, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8687)
+                        },
+                        new
+                        {
+                            Isbn = 3,
+                            BookTitle = "Book Title 3",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 2, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8689)
+                        },
+                        new
+                        {
+                            Isbn = 4,
+                            BookTitle = "Book Title 4",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 6, 1, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8691)
+                        },
+                        new
+                        {
+                            Isbn = 5,
+                            BookTitle = "Book Title 5",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 31, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8693)
+                        },
+                        new
+                        {
+                            Isbn = 6,
+                            BookTitle = "Book Title 6",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 30, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8695)
+                        },
+                        new
+                        {
+                            Isbn = 7,
+                            BookTitle = "Book Title 7",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 29, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8697)
+                        },
+                        new
+                        {
+                            Isbn = 8,
+                            BookTitle = "Book Title 8",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 28, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8699)
+                        },
+                        new
+                        {
+                            Isbn = 9,
+                            BookTitle = "Book Title 9",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 27, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8701)
+                        },
+                        new
+                        {
+                            Isbn = 10,
+                            BookTitle = "Book Title 10",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date_Of_Publication = new DateTime(2023, 5, 26, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(8703)
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Books_At_Library", b =>
@@ -223,6 +641,88 @@ namespace LABMS.Persistence.Migrations
                     b.HasIndex("LibraryId");
 
                     b.ToTable("Books_At_Libraries");
+
+                    b.HasData(
+                        new
+                        {
+                            Isbn = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 1,
+                            Quantity_In_Stock = 5
+                        },
+                        new
+                        {
+                            Isbn = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 2,
+                            Quantity_In_Stock = 10
+                        },
+                        new
+                        {
+                            Isbn = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 3,
+                            Quantity_In_Stock = 15
+                        },
+                        new
+                        {
+                            Isbn = 4,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 4,
+                            Quantity_In_Stock = 20
+                        },
+                        new
+                        {
+                            Isbn = 5,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 5,
+                            Quantity_In_Stock = 25
+                        },
+                        new
+                        {
+                            Isbn = 6,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 6,
+                            Quantity_In_Stock = 30
+                        },
+                        new
+                        {
+                            Isbn = 7,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 7,
+                            Quantity_In_Stock = 35
+                        },
+                        new
+                        {
+                            Isbn = 8,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 8,
+                            Quantity_In_Stock = 40
+                        },
+                        new
+                        {
+                            Isbn = 9,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 9,
+                            Quantity_In_Stock = 45
+                        },
+                        new
+                        {
+                            Isbn = 10,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryId = 10,
+                            Quantity_In_Stock = 50
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Books_By_Author", b =>
@@ -252,6 +752,78 @@ namespace LABMS.Persistence.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books_By_Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Isbn = 1,
+                            AuthorId = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 2,
+                            AuthorId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 3,
+                            AuthorId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 4,
+                            AuthorId = 4,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 5,
+                            AuthorId = 5,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 6,
+                            AuthorId = 6,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 7,
+                            AuthorId = 7,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 8,
+                            AuthorId = 8,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 9,
+                            AuthorId = 9,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Isbn = 10,
+                            AuthorId = 10,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Books_By_Category", b =>
@@ -321,7 +893,7 @@ namespace LABMS.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LibraryId"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressBaseId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -347,9 +919,91 @@ namespace LABMS.Persistence.Migrations
 
                     b.HasKey("LibraryId");
 
-                    b.HasIndex("AddressId");
+                    b.HasIndex("AddressBaseId");
 
                     b.ToTable("Libraries");
+
+                    b.HasData(
+                        new
+                        {
+                            LibraryId = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 1",
+                            LibraryName = "Library 1"
+                        },
+                        new
+                        {
+                            LibraryId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 2",
+                            LibraryName = "Library 2"
+                        },
+                        new
+                        {
+                            LibraryId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 3",
+                            LibraryName = "Library 3"
+                        },
+                        new
+                        {
+                            LibraryId = 4,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 4",
+                            LibraryName = "Library 4"
+                        },
+                        new
+                        {
+                            LibraryId = 5,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 5",
+                            LibraryName = "Library 5"
+                        },
+                        new
+                        {
+                            LibraryId = 6,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 6",
+                            LibraryName = "Library 6"
+                        },
+                        new
+                        {
+                            LibraryId = 7,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 7",
+                            LibraryName = "Library 7"
+                        },
+                        new
+                        {
+                            LibraryId = 8,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 8",
+                            LibraryName = "Library 8"
+                        },
+                        new
+                        {
+                            LibraryId = 9,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 9",
+                            LibraryName = "Library 9"
+                        },
+                        new
+                        {
+                            LibraryId = 10,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LibraryDetails = "Library Details 10",
+                            LibraryName = "Library 10"
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Member", b =>
@@ -359,6 +1013,9 @@ namespace LABMS.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"));
+
+                    b.Property<int?>("AddressBaseId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -387,9 +1044,6 @@ namespace LABMS.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Member_AddressId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -398,9 +1052,121 @@ namespace LABMS.Persistence.Migrations
 
                     b.HasKey("MemberId");
 
-                    b.HasIndex("Member_AddressId");
+                    b.HasIndex("AddressBaseId");
 
                     b.ToTable("Members");
+
+                    b.HasData(
+                        new
+                        {
+                            MemberId = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email1@example.com",
+                            FirstName = "First Name 1",
+                            Gender = "Female",
+                            LastName = "Last Name 1",
+                            PhoneNumber = 1234567891
+                        },
+                        new
+                        {
+                            MemberId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email2@example.com",
+                            FirstName = "First Name 2",
+                            Gender = "Male",
+                            LastName = "Last Name 2",
+                            PhoneNumber = 1234567892
+                        },
+                        new
+                        {
+                            MemberId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email3@example.com",
+                            FirstName = "First Name 3",
+                            Gender = "Female",
+                            LastName = "Last Name 3",
+                            PhoneNumber = 1234567893
+                        },
+                        new
+                        {
+                            MemberId = 4,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email4@example.com",
+                            FirstName = "First Name 4",
+                            Gender = "Male",
+                            LastName = "Last Name 4",
+                            PhoneNumber = 1234567894
+                        },
+                        new
+                        {
+                            MemberId = 5,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email5@example.com",
+                            FirstName = "First Name 5",
+                            Gender = "Female",
+                            LastName = "Last Name 5",
+                            PhoneNumber = 1234567895
+                        },
+                        new
+                        {
+                            MemberId = 6,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email6@example.com",
+                            FirstName = "First Name 6",
+                            Gender = "Male",
+                            LastName = "Last Name 6",
+                            PhoneNumber = 1234567896
+                        },
+                        new
+                        {
+                            MemberId = 7,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email7@example.com",
+                            FirstName = "First Name 7",
+                            Gender = "Female",
+                            LastName = "Last Name 7",
+                            PhoneNumber = 1234567897
+                        },
+                        new
+                        {
+                            MemberId = 8,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email8@example.com",
+                            FirstName = "First Name 8",
+                            Gender = "Male",
+                            LastName = "Last Name 8",
+                            PhoneNumber = 1234567898
+                        },
+                        new
+                        {
+                            MemberId = 9,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email9@example.com",
+                            FirstName = "First Name 9",
+                            Gender = "Female",
+                            LastName = "Last Name 9",
+                            PhoneNumber = 1234567899
+                        },
+                        new
+                        {
+                            MemberId = 10,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailAddress = "email10@example.com",
+                            FirstName = "First Name 10",
+                            Gender = "Male",
+                            LastName = "Last Name 10",
+                            PhoneNumber = 1234567900
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.MemberRequest", b =>
@@ -429,6 +1195,9 @@ namespace LABMS.Persistence.Migrations
                     b.Property<int>("Isbn")
                         .HasColumnType("int");
 
+                    b.Property<int>("LibraryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MemberId")
                         .HasColumnType("int");
 
@@ -439,9 +1208,123 @@ namespace LABMS.Persistence.Migrations
 
                     b.HasIndex("Isbn");
 
+                    b.HasIndex("LibraryId");
+
                     b.HasIndex("MemberId");
 
                     b.ToTable("MemberRequests");
+
+                    b.HasData(
+                        new
+                        {
+                            RequestId = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 6, 4, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9202),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 6, 4, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9198),
+                            Isbn = 1,
+                            LibraryId = 1,
+                            MemberId = 1
+                        },
+                        new
+                        {
+                            RequestId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 6, 3, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9206),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 6, 3, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9205),
+                            Isbn = 2,
+                            LibraryId = 2,
+                            MemberId = 2
+                        },
+                        new
+                        {
+                            RequestId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 6, 2, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9209),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 6, 2, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9208),
+                            Isbn = 3,
+                            LibraryId = 3,
+                            MemberId = 3
+                        },
+                        new
+                        {
+                            RequestId = 4,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 6, 1, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9212),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 6, 1, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9211),
+                            Isbn = 4,
+                            LibraryId = 4,
+                            MemberId = 4
+                        },
+                        new
+                        {
+                            RequestId = 5,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 5, 31, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9214),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 5, 31, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9213),
+                            Isbn = 5,
+                            LibraryId = 5,
+                            MemberId = 5
+                        },
+                        new
+                        {
+                            RequestId = 6,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 5, 30, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9217),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 5, 30, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9216),
+                            Isbn = 6,
+                            LibraryId = 6,
+                            MemberId = 6
+                        },
+                        new
+                        {
+                            RequestId = 7,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 5, 29, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9220),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 5, 29, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9219),
+                            Isbn = 7,
+                            LibraryId = 7,
+                            MemberId = 7
+                        },
+                        new
+                        {
+                            RequestId = 8,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 5, 28, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9222),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 5, 28, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9221),
+                            Isbn = 8,
+                            LibraryId = 8,
+                            MemberId = 8
+                        },
+                        new
+                        {
+                            RequestId = 9,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 5, 27, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9224),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 5, 27, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9223),
+                            Isbn = 9,
+                            LibraryId = 9,
+                            MemberId = 9
+                        },
+                        new
+                        {
+                            RequestId = 10,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateLocated = new DateTime(2023, 5, 26, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9227),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRequested = new DateTime(2023, 5, 26, 9, 58, 3, 953, DateTimeKind.Local).AddTicks(9226),
+                            Isbn = 10,
+                            LibraryId = 10,
+                            MemberId = 10
+                        });
                 });
 
             modelBuilder.Entity("LABMS.Domain.entities.Books_At_Library", b =>
@@ -505,9 +1388,7 @@ namespace LABMS.Persistence.Migrations
                 {
                     b.HasOne("LABMS.Domain.entities.Address", "Address")
                         .WithMany("Libraries")
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddressBaseId");
 
                     b.Navigation("Address");
                 });
@@ -516,9 +1397,7 @@ namespace LABMS.Persistence.Migrations
                 {
                     b.HasOne("LABMS.Domain.entities.Address", "Address")
                         .WithMany("Members")
-                        .HasForeignKey("Member_AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddressBaseId");
 
                     b.Navigation("Address");
                 });
@@ -531,6 +1410,12 @@ namespace LABMS.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("LABMS.Domain.entities.Library", "Library")
+                        .WithMany()
+                        .HasForeignKey("LibraryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("LABMS.Domain.entities.Member", "Member")
                         .WithMany("MemberRequests")
                         .HasForeignKey("MemberId")
@@ -538,6 +1423,8 @@ namespace LABMS.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Book");
+
+                    b.Navigation("Library");
 
                     b.Navigation("Member");
                 });

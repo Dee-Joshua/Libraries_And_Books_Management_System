@@ -10,8 +10,7 @@ namespace LABMS.Application.DTOs.ForUpdate
     public class AddressForUpdate
     {
 
-        [Key]
-        public int AddressId { get; set; }
+        public int BaseId { get; set; }
 
         [Required(ErrorMessage = "Building number is required.")]
         [StringLength(10, ErrorMessage = "Building number cannot exceed 10 characters.")]

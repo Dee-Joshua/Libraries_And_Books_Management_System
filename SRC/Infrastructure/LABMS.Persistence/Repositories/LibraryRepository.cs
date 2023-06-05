@@ -34,7 +34,12 @@ namespace LABMS.Persistence.Repositories
 
         public async Task<Library> GetLibraryByName(string libraryName, bool trackChanges)
         {
-            return await FindByCondition(x => x.LibraryName.Contains(libraryName), trackChanges).FirstOrDefaultAsync();
+            return await FindByCondition(x => x.LibraryName.Contains(libraryName), trackChanges).FirstOrDefaultAsync();//Will be redundant
+        }
+
+        public void UpdateLibrary(Library library)
+        {
+            Update(library);
         }
     }
 }

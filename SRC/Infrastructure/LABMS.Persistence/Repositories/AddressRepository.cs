@@ -23,14 +23,19 @@ namespace LABMS.Persistence.Repositories
 
         public async Task<Address> GetAddressByIdAsync(int Id, bool trackChanges)
         {
-            return await FindByCondition(x => x.AddressId.Equals(Id), trackChanges).FirstOrDefaultAsync();
+            return await FindByCondition(x => x.BaseId.Equals(Id), trackChanges).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Address>> GetAllAddressesAsync(bool trackChanges)
+        public void UpdateAddress(Address address)
         {
-            return await FindAll(trackChanges)
-                .OrderBy(x => x.AddressId)
-                .ToListAsync();
+            Update(address);
         }
+
+        /* public async Task<IEnumerable<Address>> GetAllAddressesAsync(bool trackChanges)
+         {
+             return await FindAll(trackChanges)
+                 .OrderBy(x => x.BaseId)
+                 .ToListAsync();
+         }*/
     }
 }

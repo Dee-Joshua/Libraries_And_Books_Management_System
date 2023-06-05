@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Persistence.Common
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected RepositoryContext RepositoryContext;
         public RepositoryBase(RepositoryContext repositoryContext)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.ServiceContract.Interfaces
 {
-    internal interface IBooks_By_Category_Service
+    public interface IBooks_By_Category_Service
     {
     }
 }

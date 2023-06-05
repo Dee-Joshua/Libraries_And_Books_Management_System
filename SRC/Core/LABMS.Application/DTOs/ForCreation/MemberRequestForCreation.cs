@@ -11,11 +11,10 @@ namespace LABMS.Application.DTOs.ForCreation
 {
     public class MemberRequestForCreation
     {
-        [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
 
-        [ForeignKey(nameof(Book))]
         public int Isbn { get; set; }
+        public int LibraryId { get; set; }
 
         [Required(ErrorMessage = "The date requested is required.")]
         public DateTime DateRequested { get; set; }

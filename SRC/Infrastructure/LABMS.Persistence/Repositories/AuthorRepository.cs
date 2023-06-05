@@ -31,5 +31,10 @@ namespace LABMS.Persistence.Repositories
         {
             return await FindByCondition(x => x.AuthorId.Equals(id), trackChanges).FirstOrDefaultAsync();
         }
+
+        public void UpdateAuthor(Author author)
+        {
+            Update(author);
+        }
     }
 }

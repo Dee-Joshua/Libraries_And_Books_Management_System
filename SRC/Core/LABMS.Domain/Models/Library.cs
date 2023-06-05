@@ -13,9 +13,6 @@ namespace LABMS.Domain.entities
     {
         [Key]
         public int LibraryId { get; set; }
-        
-        [ForeignKey(nameof(Address))]
-        public int AddressId { get; set; }
 
         [Required]
         [MaxLength(50)]

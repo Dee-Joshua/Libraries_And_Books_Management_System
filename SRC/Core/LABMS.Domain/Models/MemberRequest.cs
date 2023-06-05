@@ -16,6 +16,8 @@ namespace LABMS.Domain.entities
 
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
+        [ForeignKey(nameof(Library))]
+        public int LibraryId { get; set; }
 
         [ForeignKey(nameof(Book))]
         public int Isbn { get; set; }
@@ -28,6 +30,7 @@ namespace LABMS.Domain.entities
 
         // Navigation property for the one-to-many relationship
         public virtual Member? Member { get; set; }
+        public virtual Library? Library { get; set; }
         public virtual Book? Book { get; set; }
     }
 

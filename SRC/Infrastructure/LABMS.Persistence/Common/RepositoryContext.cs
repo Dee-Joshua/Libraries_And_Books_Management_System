@@ -1,4 +1,5 @@
 ﻿using LABMS.Domain.entities;
+using LABMS.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,22 @@ namespace LABMS.Persistence.Common
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Books_By_Author>().HasKey(x => new { x.AuthorId });
-            modelBuilder.Entity<Books_By_Author>().HasKey(x=>new { x.Isbn });
+            modelBuilder.Entity<Books_By_Author>().HasKey(x => new { x.Isbn });
             modelBuilder.Entity<Books_By_Category>().HasKey(x => new { x.CategoryId });
             modelBuilder.Entity<Books_By_Category>().HasKey(x => new { x.Isbn });
             modelBuilder.Entity<Books_At_Library>().HasKey(x => new { x.LibraryId });
             modelBuilder.Entity<Books_At_Library>().HasKey(x => new { x.Isbn });
+
+            //Database seeding 
+            modelBuilder.ApplyConfiguration(new AddressConfiguration());
+            modelBuilder.ApplyConfiguration(new AmazonBooksConfiguration());
+            modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+            modelBuilder.ApplyConfiguration(new Books_At_LibraryConfiguration());
+            modelBuilder.ApplyConfiguration(new Books_By_AuthorConfiguration());
+            modelBuilder.ApplyConfiguration(new BooksConfiguration());
+            modelBuilder.ApplyConfiguration(new LibrariesConfiguration());
+            modelBuilder.ApplyConfiguration(new MemberRequestsConfiguration());
+            modelBuilder.ApplyConfiguration(new MemberConfiguration());
         }
     }
 }

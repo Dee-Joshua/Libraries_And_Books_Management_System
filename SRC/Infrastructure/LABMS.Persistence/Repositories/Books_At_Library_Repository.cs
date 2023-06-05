@@ -27,14 +27,29 @@ namespace LABMS.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Books_At_Library>> GetBooks_At_LibraryByBookIdAsync(int isbn, bool trackChanges)
+        {
+            return await FindByCondition(x=>x.Isbn.Equals(isbn),trackChanges).ToListAsync();
+        }
+
         public async Task<Books_At_Library> GetBooks_At_LibraryByIdAsync(int isbn, int libraryId, bool trackChanges)
         {
             return await FindByCondition(x => x.Isbn.Equals(isbn) && x.LibraryId.Equals(libraryId), trackChanges).FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<Books_At_Library>> GetBooks_At_LibraryByLibraryIdAsync(int libraryId, bool trackChanges)
+        {
+            return await FindByCondition(x=>x.LibraryId.Equals(libraryId),trackChanges).ToListAsync();
+        }
+
         public async Task<IEnumerable<Books_At_Library>> GetBooks_At_LibraryByQuantity(int min_Quantity_In_Stock, bool trackChanges)
         {
             return await FindAll(trackChanges).Where(x => x.Quantity_In_Stock <= min_Quantity_In_Stock).ToListAsync();
+        }
+
+        public void UpdateBook_At_Library(Books_At_Library books_At_Library)
+        {
+            Update(books_At_Library);
         }
     }
 }

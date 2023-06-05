@@ -27,9 +27,19 @@ namespace LABMS.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<Books_By_Author> GetBooks_By_AuthorByBookIdAsync(int isbn, bool trackChanges)
+        {
+            return await FindByCondition(x=>x.Isbn.Equals(isbn),trackChanges).FirstAsync();
+        }
+
         public async Task<Books_By_Author> GetBooks_By_AuthorByIdAsync(int isbn, int authorId, bool trackChanges)
         {
             return await FindByCondition(x => x.Isbn.Equals(isbn) && x.AuthorId.Equals(authorId), trackChanges).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<Books_By_Author>> GetBook_By_AuthorbyAuthorId(int authorId, bool trackChanges)
+        {
+           return await FindByCondition(x=>x.AuthorId.Equals(authorId),trackChanges).ToListAsync();
         }
     }
 }

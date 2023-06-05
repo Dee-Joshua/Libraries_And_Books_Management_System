@@ -42,5 +42,10 @@ namespace LABMS.Persistence.Repositories
         {
             return await FindByCondition(x => x.PhoneNumber.Equals(phoneNumber), trackChanges).FirstOrDefaultAsync();
         }
+
+        public void UpdateMember(Member member)
+        {
+            Update(member);
+        }
     }
 }

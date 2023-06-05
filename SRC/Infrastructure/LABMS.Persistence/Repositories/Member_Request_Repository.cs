@@ -20,6 +20,16 @@ namespace LABMS.Persistence.Repositories
 
         public void DeleteMemberRequest(MemberRequest memberRequest) => Delete(memberRequest);
 
+        public async Task<IEnumerable<MemberRequest>> GetAllMemberRequestedByMemberId(int memberId, bool trackChanges)
+        {
+            return await FindByCondition(x => x.MemberId.Equals(memberId), trackChanges).ToListAsync();
+        }
+
+        public async Task<IEnumerable<MemberRequest>> GetAllMemberRequestByLibraryId(int libraryId, bool trackChanges)
+        {
+            return await FindByCondition(x=>x.LibraryId.Equals(libraryId),trackChanges).ToListAsync();
+        }
+
         public async Task<IEnumerable<MemberRequest>> GetAllMemberRequestsAsync(bool trackChanges)
         {
             return await FindAll(trackChanges)
@@ -30,6 +40,11 @@ namespace LABMS.Persistence.Repositories
         public async Task<MemberRequest> GetMemberRequestByIdAsync(int id, bool trackChanges)
         {
             return await FindByCondition(x => x.RequestId.Equals(id), trackChanges).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<MemberRequest>> GetAllMemberRequestedByBookId(int bookId, bool trackChanges)
+        {
+            return await FindByCondition(x=>x.Isbn.Equals(bookId), trackChanges).ToListAsync();
         }
     }
 }

@@ -14,8 +14,6 @@ namespace LABMS.Domain.entities
         [Key]
         public int MemberId { get; set; }
 
-        [ForeignKey(nameof(Address))]
-        public int Member_AddressId { get; set; }
 
         [Required(ErrorMessage = "Gender is required.")]
         public string? Gender { get; set; }

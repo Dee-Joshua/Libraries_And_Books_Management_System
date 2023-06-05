@@ -9,9 +9,10 @@ namespace LABMS.Application.Contracts
 {
     public interface IAddressRepository
     {
-        Task<IEnumerable<Address>> GetAllAddressesAsync(bool trackChanges);
+        //Task<IEnumerable<Address>> GetAllAddressesAsync(bool trackChanges);
         Task<Address> GetAddressByIdAsync(int Id, bool trackChanges);
         void CreateAddress(Address address);
+        void UpdateAddress(Address address);
         void DeleteAddress(Address address);
     }
 }

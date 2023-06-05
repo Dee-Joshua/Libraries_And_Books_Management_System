@@ -1,4 +1,6 @@
-﻿using LABMS.Domain.entities;
+﻿using LABMS.Application.DTOs.ForCreation;
+using LABMS.Application.DTOs.ForDto;
+using LABMS.Domain.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace LABMS.Application.Contracts
         Task<Library> GetLibraryByIdAsync(int id, bool trackChanges);
         Task<Library> GetLibraryByName(string libraryName, bool trackChanges);
         void CreateLibrary(Library library);
+        void UpdateLibrary(Library library);
         void DeleteLibrary(Library library);
     }
 }
