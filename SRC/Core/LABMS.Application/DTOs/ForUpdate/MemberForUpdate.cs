@@ -11,11 +11,7 @@ namespace LABMS.Application.DTOs.ForUpdate
 {
     public class MemberForUpdate
     {
-        [Key]
         public int MemberId { get; set; }
-
-        [ForeignKey(nameof(Address))]
-        public int Member_AddressId { get; set; }
 
         [Required(ErrorMessage = "Gender is required.")]
         public string? Gender { get; set; }

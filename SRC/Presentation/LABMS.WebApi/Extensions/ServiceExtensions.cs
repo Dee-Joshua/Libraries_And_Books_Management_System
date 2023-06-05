@@ -1,6 +1,9 @@
 ﻿using LABMS.Application.Common;
 using LABMS.Persistence.Common;
+using LABMS.ServiceContract.Common;
+using LABMS.ServiceRepository.Common;
 using LoggerService;
+using Microsoft.EntityFrameworkCore;
 
 namespace LABMS.WebApi.Extensions
 {
@@ -22,6 +25,9 @@ namespace LABMS.WebApi.Extensions
         public static void ConfigureLoggerService(this IServiceCollection services) => services.AddSingleton<ILoggerManager, LoggerManager>();
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) => services.AddScoped<IRepositoryManager, RepositoryManager>();
+        public static void ConfigureServiceManager(this IServiceCollection services) => services.AddScoped<IServiceManager, ServiceManager>();
+        public static void ConfigureSQLServer(this IServiceCollection services, IConfiguration configuration) => services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection"))
+                );
     }
 }
  

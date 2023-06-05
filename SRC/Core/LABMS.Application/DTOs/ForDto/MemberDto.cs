@@ -13,8 +13,6 @@ namespace LABMS.Application.DTOs.ForDto
     {
         public int MemberId { get; set; }
 
-        public int Member_AddressId { get; set; }
-
         public string? Gender { get; set; }
 
         public string? FirstName { get; set; }

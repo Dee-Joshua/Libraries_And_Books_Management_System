@@ -9,7 +9,7 @@ namespace LABMS.Application.DTOs.ForDto
 {
     public class AddressDto
     {
-        public int AddressId { get; set; }
+        public int BaseId { get; set; }
 
         public string? BuildingNumber { get; set; }
 

@@ -13,8 +13,6 @@ namespace LABMS.Application.DTOs.ForDto
     {
         public int LibraryId { get; set; }
 
-        public int AddressId { get; set; }
-
         public string? LibraryName { get; set; }
 
         public string? LibraryDetails { get; set; }

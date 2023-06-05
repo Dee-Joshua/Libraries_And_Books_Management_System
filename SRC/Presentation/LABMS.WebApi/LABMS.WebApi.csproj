@@ -21,6 +21,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\..\Infrastructure\LABMS.Persistence\LABMS.Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\LABMS.ServiceContract\LABMS.ServiceContract.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\LABMS.ServiceRepo\LABMS.ServiceRepository.csproj" />
+    <ProjectReference Include="..\LABMS.Controller\LABMS.Controller.csproj" />
   </ItemGroup>
 
 </Project>
