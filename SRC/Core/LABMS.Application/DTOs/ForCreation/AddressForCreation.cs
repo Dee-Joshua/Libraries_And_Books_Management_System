@@ -9,6 +9,8 @@ namespace LABMS.Application.DTOs.ForCreation
 {
     public class AddressForCreation
     {
+        [Required(ErrorMessage ="The id is required")]
+        public int BaseId { get; set; }
         [Required(ErrorMessage = "Building number is required.")]
         [StringLength(10, ErrorMessage = "Building number cannot exceed 10 characters.")]
         public string? BuildingNumber { get; set; }

@@ -14,6 +14,7 @@ namespace LABMS.Application.DTOs.ForDto
         public int RequestId { get; set; }
 
         public int MemberId { get; set; }
+        public int LibraryId { get; set; }
 
         public int Isbn { get; set; }
 
