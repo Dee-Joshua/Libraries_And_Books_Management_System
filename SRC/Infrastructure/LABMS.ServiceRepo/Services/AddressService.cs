@@ -24,8 +24,13 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<AddressDto> CreateAddressAsync(AddressForCreation addressCreationDto, bool trackChanges)
+        public async Task<AddressDto> CreateAddressAsync(AddressForCreation addressCreationDto)
         {
+            var haveAddress = await _repositoryManager.AddressRepository.GetAddressByIdAsync(addressCreationDto.BaseId, false);
+            if (haveAddress !=null)
+            {
+                throw new AddressAlreadyExistException(addressCreationDto.BaseId);
+            }
             var address = _mapper.Map<Address>(addressCreationDto);
             _repositoryManager.AddressRepository.CreateAddress(address);
             await _repositoryManager.SaveAsync();

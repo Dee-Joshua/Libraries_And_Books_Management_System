@@ -22,10 +22,10 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task CloseMemberRequest(int requestId)
+        public async Task CloseMemberRequest(int memberId, int requestId)
         {
             var memberRequest = await _repositoryManager.MemberRequestRepository
-                .GetMemberRequestByIdAsync(requestId, false)
+                .GetMemberRequestByIdAndMemberIdAsync(memberId,requestId, false)
                 ?? throw new MemberRequestNotFoundException(requestId);
             var itemInStock = await _repositoryManager.BooksAtLibraryRepository
                 .GetBooks_At_LibraryByIdAsync(memberRequest.Isbn, memberRequest.LibraryId, false)
@@ -91,11 +91,11 @@ namespace LABMS.ServiceRepository.Services
             return memberRequestDto;
         }
 
-        public async Task<MemberRequestDto> GetMemberRequestByIdAsync(int id, bool trackChanges)
+        public async Task<MemberRequestDto> GetMemberRequestByIdAsync(int memberId, int id, bool trackChanges)
         {
             var memberRequest = await _repositoryManager.MemberRequestRepository
-                .GetMemberRequestByIdAsync(id, trackChanges)
-                ?? throw new MemberNotFoundException(id);
+                .GetMemberRequestByIdAndMemberIdAsync(memberId, id, trackChanges)
+                ?? throw new MemberRequestNotFoundException(id);
             var memberRequestDto = _mapper.Map<MemberRequestDto>(memberRequest);
             return memberRequestDto;
         }

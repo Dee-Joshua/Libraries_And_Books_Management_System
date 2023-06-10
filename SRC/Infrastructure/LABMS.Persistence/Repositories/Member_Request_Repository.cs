@@ -37,9 +37,9 @@ namespace LABMS.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<MemberRequest> GetMemberRequestByIdAsync(int id, bool trackChanges)
+        public async Task<MemberRequest> GetMemberRequestByIdAndMemberIdAsync(int memberId, int id, bool trackChanges)
         {
-            return await FindByCondition(x => x.RequestId.Equals(id), trackChanges).FirstOrDefaultAsync();
+            return await FindByCondition(x => x.RequestId.Equals(id)&& x.MemberId.Equals(memberId), trackChanges).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<MemberRequest>> GetAllMemberRequestedByBookId(int bookId, bool trackChanges)

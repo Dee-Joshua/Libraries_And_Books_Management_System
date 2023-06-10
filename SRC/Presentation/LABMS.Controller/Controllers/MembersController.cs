@@ -26,7 +26,7 @@ namespace LABMS.Controller.Controllers
         }
 
         // GET api/<MembersController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name= "GetMember")]
         public async Task<ActionResult> GetMember(int id)
         {
             if (id == 0)

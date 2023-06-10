@@ -51,12 +51,12 @@ namespace LABMS.ServiceRepository.Services
             return authorBooksDto;
         }
 
-        public async Task<Books_By_AuthorDto> GetAllBooks_By_AuthorByAuthorIdAsync(int authorId, bool trackChanges)
+        public async Task<IEnumerable<Books_By_AuthorDto>> GetAllBooks_By_AuthorByAuthorIdAsync(int authorId, bool trackChanges)
         {
             var authorBooks = await _repositoryManager.BooksByAuthorRepository
                 .GetBook_By_AuthorbyAuthorId(authorId,trackChanges)
                 ?? throw new Book_By_AuthorNotFoundException();
-            var authorBookDto = _mapper.Map<Books_By_AuthorDto>(authorBooks);
+            var authorBookDto = _mapper.Map<IEnumerable<Books_By_AuthorDto>>(authorBooks);
             return authorBookDto;
         }
 
@@ -68,5 +68,14 @@ namespace LABMS.ServiceRepository.Services
             var authorbookDto = _mapper.Map<Books_By_AuthorDto>(authorbook);
             return authorbookDto;   
         }
+        public async Task<Books_By_AuthorDto> GetAllBooks_By_AuthorByAuthorBookIdIdAsync(int authorId, int bookId, bool trackChanges)
+        {
+            var authorBook = await _repositoryManager.BooksByAuthorRepository
+                .GetBooks_By_AuthorByIdAsync(bookId, authorId, trackChanges)
+                ?? throw new Book_By_AuthorNotFoundException();
+            var authorBookDto = _mapper.Map<Books_By_AuthorDto>(authorBook);
+            return authorBookDto;
+        }
+
     }
 }

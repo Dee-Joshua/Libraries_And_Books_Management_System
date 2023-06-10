@@ -45,12 +45,12 @@ namespace LABMS.ServiceRepository.Services
             var bookByAuthor = await _repositoryManager.BooksByAuthorRepository
                 .GetBook_By_AuthorbyAuthorId(authorId,trackChanges)
                 ?? throw new BookNotFoundException(authorId);
-            IEnumerable<Book> books = new List<Book>();
+            List<Book> books = new List<Book>();
             foreach(var item in bookByAuthor)
             {
                 var book = await _repositoryManager.BookRepository.GetBookByIdAsync(item.Isbn, trackChanges)
                     ??throw new BookNotFoundException(item.Isbn);
-                books.Append(book);
+                books.Add(book);
             }
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
             return booksDto;
@@ -69,12 +69,12 @@ namespace LABMS.ServiceRepository.Services
             var booksRequested = await _repositoryManager.MemberRequestRepository.
                 GetAllMemberRequestByLibraryId(libraryId, trackChanges)
                 ?? throw new BookNotFoundException(libraryId);
-            IEnumerable<Book> books = new List<Book>();
+            List<Book> books = new List<Book>();
             foreach(var item in booksRequested)
             {
                 var book = await _repositoryManager.BookRepository.GetBookByIdAsync(item.Isbn, trackChanges)
                     ?? throw new BookNotFoundException(item.Isbn);
-                books.Append(book);
+                books.Add(book);
             }
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
             return booksDto;
@@ -85,12 +85,12 @@ namespace LABMS.ServiceRepository.Services
             var booksRequested = await _repositoryManager.MemberRequestRepository.
                 GetAllMemberRequestedByMemberId(memberId, trackChanges)
                 ?? throw new BookNotFoundException(memberId);
-            IEnumerable<Book> books = new List<Book>();
+            List<Book> books = new List<Book>();
             foreach (var item in booksRequested)
             {
                 var book = await _repositoryManager.BookRepository.GetBookByIdAsync(item.Isbn, trackChanges)
                     ?? throw new BookNotFoundException(item.Isbn);
-                books.Append(book);
+                books.Add(book);
             }
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
             return booksDto;
@@ -99,7 +99,8 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task<BookDto> GetBooksById(int isbn, bool trackChanges)
         {
-            var book = await _repositoryManager.BookRepository.GetBookByIdAsync(isbn, trackChanges);
+            var book = await _repositoryManager.BookRepository.GetBookByIdAsync(isbn, trackChanges)
+                ??throw new BookNotFoundException(isbn);
             var bookDto = _mapper.Map<BookDto>(book);
             return bookDto;
         }
