@@ -1,5 +1,6 @@
 ﻿using LABMS.Application.DTOs.ForCreation;
 using LABMS.Application.DTOs.ForUpdate;
+using LABMS.Controller.ActionFilters;
 using LABMS.ServiceContract.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -46,12 +47,9 @@ namespace LABMS.Controller.Controllers
 
         // POST api/<MembersController>
         [HttpPost]
-        public async Task<ActionResult> AddMemberRequest(int memberId, [FromBody] MemberRequestForCreation memberRequestToCreate)
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<ActionResult> AddMemberRequest(int memberId, [FromBody] MemberRequestForCreationDto memberRequestToCreate)
         {
-            if (memberRequestToCreate == null)
-            {
-                return BadRequest("Input cannot be null");
-            }
             if(memberRequestToCreate.MemberId !=memberId)
             {
                 return BadRequest("Wrong user Id inputed");

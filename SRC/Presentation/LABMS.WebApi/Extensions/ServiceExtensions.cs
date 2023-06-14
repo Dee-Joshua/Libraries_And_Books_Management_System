@@ -1,4 +1,5 @@
 ﻿using LABMS.Application.Common;
+using LABMS.Controller.ActionFilters;
 using LABMS.Persistence.Common;
 using LABMS.ServiceContract.Common;
 using LABMS.ServiceRepository.Common;
@@ -26,8 +27,9 @@ namespace LABMS.WebApi.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) => services.AddScoped<IRepositoryManager, RepositoryManager>();
         public static void ConfigureServiceManager(this IServiceCollection services) => services.AddScoped<IServiceManager, ServiceManager>();
-        public static void ConfigureSQLServer(this IServiceCollection services, IConfiguration configuration) => services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection"))
-                );
+        public static void ConfigureSQLServer(this IServiceCollection services, IConfiguration configuration) => services
+            .AddDbContext<RepositoryContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+        public static void ConfigureValidationActionFilter(this IServiceCollection services)=> services.AddScoped<ValidationFilterAttribute> ();
     }
 }
  

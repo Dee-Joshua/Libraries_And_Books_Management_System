@@ -24,7 +24,7 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<AuthorDto> CreateAuthor(AuthorForCreation author)
+        public async Task<AuthorDto> CreateAuthor(AuthorForCreationDto author)
         {
             var authorToCreate = _mapper.Map<Author>(author);
             _repositoryManager.AuthorRepository.CreateAuthor(authorToCreate);
@@ -35,8 +35,7 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task DeleteAuthor(int authorId)
         {
-            var author = await _repositoryManager.AuthorRepository.GetAuthorByIdAsync(authorId, false)
-                ?? throw new AuthorNotFoundException(authorId);
+            var author = await CheckIfAuthorExistAndReturnAuthor(authorId, false);
             _repositoryManager.AuthorRepository.DeleteAuthor(author);
             await _repositoryManager.SaveAsync();
         }
@@ -50,22 +49,28 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task<AuthorDto> GetAuthorByIdAsync(int id)
         {
-            var author = await _repositoryManager.AuthorRepository.GetAuthorByIdAsync(id, false)
-                ??throw new AuthorNotFoundException(id);
+            var author = CheckIfAuthorExistAndReturnAuthor(id, false);
             var authorDto = _mapper.Map<AuthorDto>(author);
             return authorDto;
         }
 
         public async Task UpdateAuthor(AuthorForUpdate author)
         {
-            var authorToUpdate = await _repositoryManager.AuthorRepository
-                .GetAuthorByIdAsync(author.AuthorId,false)
-                ??throw new AuthorNotFoundException(author.AuthorId);
+            await CheckIfAuthorExistAndReturnAuthor(author.AuthorId, false);
             var authorUpdate = _mapper.Map<Author>(author);
             _repositoryManager.AuthorRepository.UpdateAuthor(authorUpdate);
             await _repositoryManager.SaveAsync();
             /*var authorDto = _mapper.Map<AuthorDto>(authorUpdate);
             return authorDto;*/
+        }
+
+        //private methods to check if address exists and return the value 
+        //Reusable codes
+        private async Task<Author> CheckIfAuthorExistAndReturnAuthor(int id, bool trackChanges)
+        {
+            var author = await _repositoryManager.AuthorRepository.GetAuthorByIdAsync(id, trackChanges)
+                ?? throw new AuthorNotFoundException(id);
+            return author;
         }
     }
 }

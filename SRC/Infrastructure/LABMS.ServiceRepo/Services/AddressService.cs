@@ -24,12 +24,12 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<AddressDto> CreateAddressAsync(AddressForCreation addressCreationDto)
+        public async Task<AddressDto> CreateAddressAsync(int id, AddressForCreationDto addressCreationDto)
         {
-            var haveAddress = await _repositoryManager.AddressRepository.GetAddressByIdAsync(addressCreationDto.BaseId, false);
-            if (haveAddress !=null)
+            var haveAddress = await _repositoryManager.AddressRepository.GetAddressByIdAsync(id, false);
+            if (haveAddress != null)
             {
-                throw new AddressAlreadyExistException(addressCreationDto.BaseId);
+                throw new AddressAlreadyExistException(id);
             }
             var address = _mapper.Map<Address>(addressCreationDto);
             _repositoryManager.AddressRepository.CreateAddress(address);
@@ -40,28 +40,33 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task DeleteAddressAsync(int id, bool trackChanges)
         {
-            var address = await _repositoryManager.AddressRepository.GetAddressByIdAsync(id, trackChanges)
-                ?? throw new AddressNotFoundException(id);
+            var address = await CheckIfAddressExistAndReturnAddress(id, trackChanges);
             _repositoryManager.AddressRepository.DeleteAddress(address);
             await _repositoryManager.SaveAsync();
         }
 
         public async Task<AddressDto> GetAddressAsync(int baseId, bool trackChanges)
         {
-            var address = await _repositoryManager.AddressRepository.GetAddressByIdAsync(baseId, trackChanges)
-                ?? throw new AddressNotFoundException(baseId);
+            var address = await CheckIfAddressExistAndReturnAddress(baseId, trackChanges);
             var addressDto = _mapper.Map<AddressDto>(address);
             return addressDto;
         }
 
         public async Task UpdateAddressAsync(AddressForUpdate addressUpdateDto, bool trackChanges)
         {
-            var address = await _repositoryManager.AddressRepository
-                .GetAddressByIdAsync(addressUpdateDto.BaseId, trackChanges)
-                ?? throw new AddressNotFoundException(addressUpdateDto.BaseId);
+            await CheckIfAddressExistAndReturnAddress(addressUpdateDto.BaseId, trackChanges);
             var addressToUpdate = _mapper.Map<Address>(addressUpdateDto);
             _repositoryManager.AddressRepository.UpdateAddress(addressToUpdate);
             await _repositoryManager.SaveAsync();
+        }
+
+        //private methods to check if address exists and return the value 
+        //Reusable codes
+        private async Task<Address> CheckIfAddressExistAndReturnAddress(int id, bool trackChanges)
+        {
+            var address = await _repositoryManager.AddressRepository.GetAddressByIdAsync(id, trackChanges)
+                ?? throw new AddressNotFoundException(id);
+            return address;
         }
     }
 }

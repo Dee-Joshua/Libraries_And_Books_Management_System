@@ -23,7 +23,7 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<BookDto> CreateBook(BookForCreation bookCreate)
+        public async Task<BookDto> CreateBook(BookForCreationDto bookCreate)
         {
             var book = _mapper.Map<Book>(bookCreate);
             _repositoryManager.BookRepository.CreateBook(book);
@@ -34,8 +34,7 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task DeleteBook(int id)
         {
-            var book = await _repositoryManager.BookRepository.GetBookByIdAsync(id, false)
-                ?? throw new BookNotFoundException(id);
+            var book = await CheckIfBookExistAndReturnBook(id, false);
             _repositoryManager.BookRepository.DeleteBook(book);
             await _repositoryManager.SaveAsync();
         }
@@ -48,8 +47,7 @@ namespace LABMS.ServiceRepository.Services
             List<Book> books = new List<Book>();
             foreach(var item in bookByAuthor)
             {
-                var book = await _repositoryManager.BookRepository.GetBookByIdAsync(item.Isbn, trackChanges)
-                    ??throw new BookNotFoundException(item.Isbn);
+                var book = await CheckIfBookExistAndReturnBook(item.Isbn, trackChanges);
                 books.Add(book);
             }
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
@@ -72,8 +70,7 @@ namespace LABMS.ServiceRepository.Services
             List<Book> books = new List<Book>();
             foreach(var item in booksRequested)
             {
-                var book = await _repositoryManager.BookRepository.GetBookByIdAsync(item.Isbn, trackChanges)
-                    ?? throw new BookNotFoundException(item.Isbn);
+                var book = await CheckIfBookExistAndReturnBook(item.Isbn, trackChanges);
                 books.Add(book);
             }
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
@@ -88,8 +85,7 @@ namespace LABMS.ServiceRepository.Services
             List<Book> books = new List<Book>();
             foreach (var item in booksRequested)
             {
-                var book = await _repositoryManager.BookRepository.GetBookByIdAsync(item.Isbn, trackChanges)
-                    ?? throw new BookNotFoundException(item.Isbn);
+                var book = await CheckIfBookExistAndReturnBook(item.Isbn, trackChanges);
                 books.Add(book);
             }
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
@@ -99,8 +95,7 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task<BookDto> GetBooksById(int isbn, bool trackChanges)
         {
-            var book = await _repositoryManager.BookRepository.GetBookByIdAsync(isbn, trackChanges)
-                ??throw new BookNotFoundException(isbn);
+            var book = await CheckIfBookExistAndReturnBook(isbn, trackChanges);
             var bookDto = _mapper.Map<BookDto>(book);
             return bookDto;
         }
@@ -114,6 +109,17 @@ namespace LABMS.ServiceRepository.Services
         {
             throw new NotImplementedException();
         }
+
+        //private methods to check if address exists and return the value 
+        //Reusable codes
+        private async Task<Book> CheckIfBookExistAndReturnBook(int id, bool trackChanges)
+        {
+            var book = await _repositoryManager.BookRepository.GetBookByIdAsync(id, false)
+                ?? throw new BookNotFoundException(id);
+            return book;
+        }
+
+
 
         /*public async Task UpdateBook(BookForUpdate bookUpdate)
         {

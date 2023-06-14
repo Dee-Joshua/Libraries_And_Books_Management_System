@@ -15,7 +15,7 @@ namespace LABMS.ServiceContract.Interfaces
         Task<IEnumerable<MemberRequestDto>> GetAllMemberRequestByMemberId(int memberId, bool trackChanges);
         Task<IEnumerable<MemberRequestDto>> GetAllMemberRequestByBookId(int bookId, bool trackChanges);
         Task<IEnumerable<MemberRequestDto>> GetAllMemberRequestByLibraryId(int libraryId, bool trackChanges);
-        Task<MemberRequestDto> CreateMemberRequest(MemberRequestForCreation memberRequestDto);// Need to also check if the quantity of book is not 0
+        Task<MemberRequestDto> CreateMemberRequest(MemberRequestForCreationDto memberRequestDto);// Need to also check if the quantity of book is not 0
         Task CloseMemberRequest(int memberId, int requestId);
 
     }

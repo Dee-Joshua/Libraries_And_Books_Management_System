@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForCreation
 {
-    public record Books_By_AuthorForCreation
+    public record Books_By_AuthorForCreationDto
     {
         public int AuthorId { get; init; }
 

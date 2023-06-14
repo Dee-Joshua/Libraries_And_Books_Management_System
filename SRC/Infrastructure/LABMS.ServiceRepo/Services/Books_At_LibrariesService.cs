@@ -24,7 +24,7 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<Books_At_LibraryDto> CreateBookAtLibrary(Books_At_LibraryForCreation books_At_Library)
+        public async Task<Books_At_LibraryDto> CreateBookAtLibrary(Books_At_LibraryForCreationDto books_At_Library)
         {
             var bookLibrary = _mapper.Map<Books_At_Library>(books_At_Library);
             _repositoryManager.BooksAtLibraryRepository.CreateBooks_At_Library(bookLibrary);

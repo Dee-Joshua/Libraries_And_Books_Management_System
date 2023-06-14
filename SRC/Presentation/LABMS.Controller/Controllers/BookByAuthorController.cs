@@ -1,4 +1,5 @@
 ﻿using LABMS.Application.DTOs.ForCreation;
+using LABMS.Controller.ActionFilters;
 using LABMS.ServiceContract.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -46,12 +47,9 @@ namespace LABMS.Controller.Controllers
 
         // POST api/<MembersController>
         [HttpPost]
-        public async Task<ActionResult> AddBookByAuthor(int authorId, [FromBody] Books_By_AuthorForCreation books_By_Author)
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<ActionResult> AddBookByAuthor(int authorId, [FromBody] Books_By_AuthorForCreationDto books_By_Author)
         {
-            if (books_By_Author == null)
-            {
-                return BadRequest("Input cannot be null");
-            }
             if (books_By_Author.AuthorId != authorId)
             {
                 return BadRequest("Wrong user Id inputed");

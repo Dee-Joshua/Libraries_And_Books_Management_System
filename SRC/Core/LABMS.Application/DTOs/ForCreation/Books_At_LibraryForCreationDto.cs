@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForCreation
 {
-    public record Books_At_LibraryForCreation
+    public record Books_At_LibraryForCreationDto
     {
         public int LibraryId { get; init; }
 

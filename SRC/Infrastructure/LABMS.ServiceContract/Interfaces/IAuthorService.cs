@@ -13,7 +13,7 @@ namespace LABMS.ServiceContract.Interfaces
     {
         Task<IEnumerable<AuthorDto>> GetAllAuthorAsync(bool trackChanges);
         Task<AuthorDto> GetAuthorByIdAsync(int id);
-        Task<AuthorDto> CreateAuthor(AuthorForCreation author);
+        Task<AuthorDto> CreateAuthor(AuthorForCreationDto author);
         Task UpdateAuthor(AuthorForUpdate author);
         Task DeleteAuthor(int authorId);
     }

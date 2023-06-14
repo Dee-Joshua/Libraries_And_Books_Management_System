@@ -14,7 +14,7 @@ namespace LABMS.ServiceContract.Interfaces
     {
         Task<IEnumerable<LibraryDto>> GetAllLibraryAsync(bool trackChanges);
         Task<LibraryDto> GetLibraryById(int id, bool trackChanges);
-        LibraryDto CreateLibrary(LibraryForCreation library);
+        LibraryDto CreateLibrary(LibraryForCreationDto library);
         Task UpdateLibrary(LibraryForUpdate library);
         Task DeleteLibrary(int id);
     }

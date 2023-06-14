@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForCreation
 {
-    public class AmazonBooksForCreation
+    public class AmazonBooksForCreationDto
     {
         [Required(ErrorMessage = "Title is required.")]
         [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]

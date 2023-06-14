@@ -11,16 +11,17 @@ namespace LABMS.Application.DTOs.ForDto
 {
     public class MemberDto
     {
-        public int MemberId { get; set; }
+        public int MemberId { get; init; }
 
-        public string? Gender { get; set; }
+        public string? Gender { get; init; }
 
-        public string? FirstName { get; set; }
+        public string? FirstName { get; init; }
 
-        public string? LastName { get; set; }
+        public string? LastName { get; init; }
 
-        public int PhoneNumber { get; set; }
+        public int PhoneNumber { get; init; }
 
-        public string? EmailAddress { get; set; }
+        public string? EmailAddress { get; init; }
+        public AddressDto? Address { get; init; }
     }
 }

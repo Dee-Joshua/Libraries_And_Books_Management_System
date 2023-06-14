@@ -13,7 +13,7 @@ namespace LABMS.ServiceContract.Interfaces
     {
         //Task<IEnumerable<AddressDto>> GetAllAddressesAsync(bool trackChanges);//We need to review this function..
         Task<AddressDto> GetAddressAsync(int baseId, bool trackChanges);
-        Task<AddressDto> CreateAddressAsync(AddressForCreation addressCreationDto);//Remove trackChanges
+        Task<AddressDto> CreateAddressAsync(int id, AddressForCreationDto addressCreationDto);//Remove trackChanges
         Task UpdateAddressAsync(AddressForUpdate addressUpdateDto, bool trackChanges);//Remove trackChanges
         Task DeleteAddressAsync(int id, bool trackChanges);//Remove trackChanges
     }

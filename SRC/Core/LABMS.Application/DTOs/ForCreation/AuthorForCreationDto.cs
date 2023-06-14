@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForCreation
 {
-    public class AuthorForCreation
+    public class AuthorForCreationDto
     {
         [Required(ErrorMessage = "First name is required.")]
         [StringLength(50, ErrorMessage = "First name cannot exceed 50 characters.")]

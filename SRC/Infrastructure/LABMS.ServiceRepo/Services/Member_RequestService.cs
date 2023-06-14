@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Execution;
 using LABMS.Application.Common;
 using LABMS.Application.DTOs.ForCreation;
 using LABMS.Application.DTOs.ForDto;
@@ -24,12 +25,8 @@ namespace LABMS.ServiceRepository.Services
         }
         public async Task CloseMemberRequest(int memberId, int requestId)
         {
-            var memberRequest = await _repositoryManager.MemberRequestRepository
-                .GetMemberRequestByIdAndMemberIdAsync(memberId,requestId, false)
-                ?? throw new MemberRequestNotFoundException(requestId);
-            var itemInStock = await _repositoryManager.BooksAtLibraryRepository
-                .GetBooks_At_LibraryByIdAsync(memberRequest.Isbn, memberRequest.LibraryId, false)
-                ?? throw new Book_At_LibraryNotFoundException(memberRequest.Isbn, memberRequest.LibraryId);
+            var memberRequest = await CheckIfMemberRequestExistAndReturnMemberRequest(memberId, requestId, false);
+            var itemInStock = await CheckIfBookAtLibraryExistAndReturnBookAtLibrary(memberRequest.Isbn, memberRequest.LibraryId, false);
 
             _repositoryManager.MemberRequestRepository.DeleteMemberRequest(memberRequest);
             itemInStock.Quantity_In_Stock++;
@@ -37,11 +34,9 @@ namespace LABMS.ServiceRepository.Services
             await _repositoryManager.SaveAsync();
         }
 
-        public async Task<MemberRequestDto> CreateMemberRequest(MemberRequestForCreation memberRequest)
+        public async Task<MemberRequestDto> CreateMemberRequest(MemberRequestForCreationDto memberRequest)
         {
-            var itemInStock = await _repositoryManager.BooksAtLibraryRepository
-                .GetBooks_At_LibraryByIdAsync(memberRequest.Isbn, memberRequest.LibraryId, false)
-                ?? throw new Book_At_LibraryNotFoundException(memberRequest.Isbn, memberRequest.LibraryId);
+            var itemInStock = await CheckIfBookAtLibraryExistAndReturnBookAtLibrary(memberRequest.Isbn,memberRequest.LibraryId, false);
             if(itemInStock.Quantity_In_Stock is 0)
             {
                 throw new BookOutOfStockException(memberRequest.Isbn, memberRequest.LibraryId);
@@ -93,11 +88,26 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task<MemberRequestDto> GetMemberRequestByIdAsync(int memberId, int id, bool trackChanges)
         {
-            var memberRequest = await _repositoryManager.MemberRequestRepository
-                .GetMemberRequestByIdAndMemberIdAsync(memberId, id, trackChanges)
-                ?? throw new MemberRequestNotFoundException(id);
+            var memberRequest = await CheckIfMemberRequestExistAndReturnMemberRequest(memberId, id, false);
             var memberRequestDto = _mapper.Map<MemberRequestDto>(memberRequest);
             return memberRequestDto;
+        }
+
+        //private methods to check if exists and return the value 
+        //Reusable codes
+        private async Task<MemberRequest> CheckIfMemberRequestExistAndReturnMemberRequest(int memberId, int requestId, bool trackChanges)
+        {
+            var memberRequest = await _repositoryManager.MemberRequestRepository
+                .GetMemberRequestByIdAndMemberIdAsync(memberId, requestId, false)
+                ?? throw new MemberRequestNotFoundException(requestId);
+            return memberRequest;
+        }
+        private async Task<Books_At_Library> CheckIfBookAtLibraryExistAndReturnBookAtLibrary(int id, int libraryId, bool trackChanges)
+        {
+            var bookAtLibrary = await _repositoryManager.BooksAtLibraryRepository
+                .GetBooks_At_LibraryByIdAsync(id,libraryId, false)
+                ?? throw new Book_At_LibraryNotFoundException(id, libraryId);
+            return bookAtLibrary;
         }
     }
 }

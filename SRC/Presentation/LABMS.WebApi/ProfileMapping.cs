@@ -12,57 +12,57 @@ namespace LABMS.WebApi
         {
             //Address Entity
             CreateMap<Address, AddressDto>();
-            CreateMap<AddressForCreation, Address>();
+            CreateMap<AddressForCreationDto, Address>();
             CreateMap<AddressForUpdate, Address>();
 
             //AmazonBooks Entity
             CreateMap<AmazonBooks, AmazonBooksDto>();
-            CreateMap<AmazonBooksForCreation, AmazonBooks>();
+            CreateMap<AmazonBooksForCreationDto, AmazonBooks>();
             CreateMap<AmazonBooksForUpdate, AmazonBooks>();
 
             //Author Entity
             CreateMap<Author, AuthorDto>();
-            CreateMap<AuthorForCreation, Author>();
+            CreateMap<AuthorForCreationDto, Author>();
             CreateMap<AuthorForUpdate, Author>();
 
             //Book Entity
             CreateMap<Book, BookDto>();
-            CreateMap<BookForCreation, Book>();
+            CreateMap<BookForCreationDto, Book>();
             CreateMap<BookForUpdate, Book>();
 
             //Books_At_Library Entity
             CreateMap<Books_At_Library, Books_At_LibraryDto>();
-            CreateMap<Books_At_LibraryForCreation,  Books_At_Library>();
+            CreateMap<Books_At_LibraryForCreationDto,  Books_At_Library>();
             CreateMap<Books_At_LibraryForUpdate, Books_At_Library>();
 
             //Books_By_Author Entity
             CreateMap<Books_By_Author, Books_By_AuthorDto>();
-            CreateMap<Books_By_AuthorForCreation, Books_By_Author>();
+            CreateMap<Books_By_AuthorForCreationDto, Books_By_Author>();
             CreateMap<Books_By_AuthorForUpdate, Books_By_Author>();
 
             //Books_By_Category Entity
             CreateMap<Books_By_Category, Books_By_CategoryDto>();
-            CreateMap<Books_By_CategoryForCreation,  Books_By_Category>();
+            CreateMap<Books_By_CategoryForCreationDto,  Books_By_Category>();
             CreateMap<Books_By_CategoryForUpdate, Books_By_Category>();
 
             //Category Entity
             CreateMap<Category, CategoryDto>();
-            CreateMap<CategoryForCreation, Category>();
+            CreateMap<CategoryForCreationDto, Category>();
             CreateMap<CategoryForUpdate, Category>();
 
             //Library Entity
             CreateMap<Library, LibraryDto>();
-            CreateMap<LibraryForCreation, Library>();
+            CreateMap<LibraryForCreationDto, Library>();
             CreateMap<LibraryForUpdate, Library>();
 
             //Member Entity
             CreateMap<Member, MemberDto>();
-            CreateMap<MemberForCreation, Member>();
+            CreateMap<MemberForCreationDto, Member>();
             CreateMap<MemberForUpdate, Member>();
 
             //MemeberRequest Entity
             CreateMap<MemberRequest,  MemberRequestDto>();
-            CreateMap<MemberRequestForCreation, MemberRequest>();
+            CreateMap<MemberRequestForCreationDto, MemberRequest>();
             CreateMap<MemberRequestForUpdate, MemberRequest>();
         }
     }

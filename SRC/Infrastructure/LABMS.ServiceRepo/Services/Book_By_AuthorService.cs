@@ -23,8 +23,10 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<Books_By_AuthorDto> CreateBook_By_Author(Books_By_AuthorForCreation books_By_Author)
+        public async Task<Books_By_AuthorDto> CreateBook_By_Author(Books_By_AuthorForCreationDto books_By_Author)
         {
+            var book = await _repositoryManager.BookRepository.GetBookByIdAsync(books_By_Author.Isbn, false)
+                ?? throw new BookNotFoundException(books_By_Author.Isbn);
             var bookAuthor = _mapper.Map<Books_By_Author>(books_By_Author);
             _repositoryManager.BooksByAuthorRepository.CreateBooks_By_Author(bookAuthor);
             await _repositoryManager.SaveAsync();
@@ -37,7 +39,8 @@ namespace LABMS.ServiceRepository.Services
             var authorBook = await _repositoryManager.BooksByAuthorRepository
                 .GetBook_By_AuthorbyAuthorId(authorId,false)
                 ?? throw new Book_By_AuthorNotFoundException(authorId, bookId);
-            var book = authorBook.Where(x=>x.Isbn.Equals(bookId)).FirstOrDefault();
+            var book = authorBook.Where(x=>x.Isbn.Equals(bookId)).FirstOrDefault()
+                ?? throw new Book_By_AuthorNotFoundException();
             _repositoryManager.BooksByAuthorRepository.DeleteBooks_By_Author(book);
             await _repositoryManager.SaveAsync();
         }

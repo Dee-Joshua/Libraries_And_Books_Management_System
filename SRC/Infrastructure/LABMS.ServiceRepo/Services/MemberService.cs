@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Execution;
 using LABMS.Application.Common;
 using LABMS.Application.DTOs.ForCreation;
 using LABMS.Application.DTOs.ForDto;
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Member = LABMS.Domain.entities.Member;
 
 namespace LABMS.ServiceRepository.Services
 {
@@ -23,17 +25,29 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public MemberDto CreateMember(MemberForCreation member)
+        public async Task<MemberDto> CreateMember(MemberForCreationDto member)
         {
             var memberModel = _mapper.Map<Member>(member);
             _repositoryManager.MemberRepository.CreateMember(memberModel);
+            var address = memberModel.Address;
+            if (address != null)
+            {
+                address.BaseId = memberModel.MemberId;
+                _repositoryManager.AddressRepository.CreateAddress(address);
+            }
+            await _repositoryManager.SaveAsync();
             var memberDto = _mapper.Map<MemberDto>(memberModel);
             return memberDto;
         }
 
         public async Task DeleteMember(int memberId)
         {
-            var member = await _repositoryManager.MemberRepository.GetMemberByIdAsync(memberId, false) ?? throw new MemberNotFoundException(memberId);
+            var member = await CheckIfMemberExistAndReturnMember(memberId, false);
+            /*var address = await _repositoryManager.AddressRepository.GetAddressByIdAsync(memberId, false);
+            if(address != null)
+            {
+                _repositoryManager.AddressRepository.DeleteAddress(address);
+            }*/
             _repositoryManager.MemberRepository.DeleteMember(member);
             await _repositoryManager.SaveAsync();
         }
@@ -47,20 +61,31 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task<MemberDto> GetMemberById(int memberId, bool trackChanges)
         {
-            var member = await _repositoryManager.MemberRepository.GetMemberByIdAsync(memberId, trackChanges) 
-                ?? throw new MemberNotFoundException(memberId);
+            var member = await CheckIfMemberExistAndReturnMember(memberId, trackChanges);
+            var address = await _repositoryManager.AddressRepository.GetAddressByIdAsync(memberId, false);
+            if(address != null)
+            {
+                member.Address = address;
+            }
             var memberDto = _mapper.Map<MemberDto>(member);
             return memberDto;
         }
 
         public async Task UpdateMember(MemberForUpdate memberForUpdate)
         {
-            var member = await _repositoryManager.MemberRepository
-                .GetMemberByIdAsync(memberForUpdate.MemberId, false)
-                ?? throw new MemberNotFoundException(memberForUpdate.MemberId);
+            var member = await CheckIfMemberExistAndReturnMember(memberForUpdate.MemberId, false);
             member = _mapper.Map<Member>(memberForUpdate);
             _repositoryManager.MemberRepository.UpdateMember(member);
             await _repositoryManager.SaveAsync();
+        }
+
+        //private methods to check if address exists and return the value 
+        //Reusable codes
+        private async Task<Member> CheckIfMemberExistAndReturnMember(int id, bool trackChanges)
+        {
+            var member = await _repositoryManager.MemberRepository.GetMemberByIdAsync(id, false) 
+                ?? throw new MemberNotFoundException(id);
+            return member;
         }
     }
 }

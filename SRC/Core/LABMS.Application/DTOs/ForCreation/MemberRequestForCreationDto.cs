@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForCreation
 {
-    public class MemberRequestForCreation
+    public class MemberRequestForCreationDto
     {
         public int MemberId { get; set; }
 

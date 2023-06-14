@@ -24,7 +24,7 @@ namespace LABMS.ServiceRepository.Services
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public LibraryDto CreateLibrary(LibraryForCreation library)
+        public LibraryDto CreateLibrary(LibraryForCreationDto library)
         {
             var libraryToCreate = _mapper.Map<Library>(library);
             _repositoryManager.LibraryRepository.CreateLibrary(libraryToCreate);
@@ -34,8 +34,7 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task DeleteLibrary(int libraryId)
         {
-            var library = await _repositoryManager.LibraryRepository.GetLibraryByIdAsync(libraryId,false)
-                ?? throw new LibraryNotFoundException(libraryId);
+            var library = await CheckIfLibraryExistAndReturnLibrary(libraryId, false);
             _repositoryManager.LibraryRepository.DeleteLibrary(library);
             await _repositoryManager.SaveAsync();
 
@@ -50,21 +49,27 @@ namespace LABMS.ServiceRepository.Services
 
         public async Task<LibraryDto> GetLibraryById(int id, bool trackChanges)
         {
-            var library = await _repositoryManager.LibraryRepository.GetLibraryByIdAsync(id, trackChanges)
-                ?? throw new LibraryNotFoundException(id);
+            var library = await CheckIfLibraryExistAndReturnLibrary(id, trackChanges);
             var libraryDto = _mapper.Map<LibraryDto>(library);
             return libraryDto;
 
         }
 
-        public async Task UpdateLibrary(LibraryForUpdate library)
+        public async Task UpdateLibrary(LibraryForUpdate libraryToUpdate)
         {
-            var libraryToUpdate = await _repositoryManager.LibraryRepository
-                .GetLibraryByIdAsync(library.LibraryId,false)
-                ?? throw new LibraryNotFoundException(library.LibraryId);
-            var libraryUpdate = _mapper.Map<Library>(library);
-            _repositoryManager.LibraryRepository.UpdateLibrary(libraryToUpdate);
+            await CheckIfLibraryExistAndReturnLibrary(libraryToUpdate.LibraryId, false);
+            var library = _mapper.Map<Library>(libraryToUpdate);
+            _repositoryManager.LibraryRepository.UpdateLibrary(library);
             await _repositoryManager.SaveAsync();
+        }
+
+        //private methods to check if address exists and return the value 
+        //Reusable codes
+        private async Task<Library> CheckIfLibraryExistAndReturnLibrary(int id, bool trackChanges)
+        {
+            var library = await _repositoryManager.LibraryRepository.GetLibraryByIdAsync(id, false)
+                ?? throw new LibraryNotFoundException(id);
+            return library;
         }
     }
 }

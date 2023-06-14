@@ -1,5 +1,6 @@
 ﻿using LABMS.Application.DTOs.ForCreation;
 using LABMS.Application.DTOs.ForUpdate;
+using LABMS.Controller.ActionFilters;
 using LABMS.ServiceContract.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -33,32 +34,25 @@ namespace LABMS.Controller.Controllers
 
         // POST api/<MembersController>
         [HttpPost]
-        public async Task<ActionResult> AddAddress(int memberId, [FromBody] AddressForCreation addressForCreation)
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<ActionResult> AddAddress(int memberId, [FromBody] AddressForCreationDto addressForCreation)
         {
-            if (addressForCreation == null)
-            {
-                return BadRequest("Input cannot be null");
-            }
-            if(addressForCreation.BaseId != memberId)
+            if( memberId.Equals(0))
             {
                 return BadRequest("Id is invalid");
             }
-            var addressCreated = await serviceManager.AddressService.CreateAddressAsync(addressForCreation);
+            var addressCreated = await serviceManager.AddressService.CreateAddressAsync(memberId, addressForCreation);
             return CreatedAtAction(nameof(GetAddress), new { memberId, id = addressCreated.BaseId }, addressCreated);
         }
 
         [HttpPut]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<ActionResult> UpdateAddress(int memberId, [FromBody] AddressForUpdate addressForUpdate)
         {
             if ( memberId.Equals(0) || addressForUpdate.BaseId!=memberId)
             {
                 return BadRequest("Invalid id");
             }
-            if(addressForUpdate == null)
-            {
-                return BadRequest("The address to update cannot be null");
-            }
-
             await serviceManager.AddressService.UpdateAddressAsync(addressForUpdate, false);
             return NoContent();
         }

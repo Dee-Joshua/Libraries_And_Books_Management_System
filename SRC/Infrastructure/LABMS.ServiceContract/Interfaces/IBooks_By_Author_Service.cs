@@ -14,7 +14,7 @@ namespace LABMS.ServiceContract.Interfaces
         Task<IEnumerable<Books_By_AuthorDto>> GetAllBooks_By_AuthorByAuthorIdAsync(int authorId, bool trackChanges);
         Task<Books_By_AuthorDto> GetAllBooks_By_AuthorByBookIdAsync(int bookId, bool trackChanges);
         Task<Books_By_AuthorDto> GetAllBooks_By_AuthorByAuthorBookIdIdAsync(int authorId, int bookId, bool trackChanges);
-        Task<Books_By_AuthorDto> CreateBook_By_Author(Books_By_AuthorForCreation books_By_Author);
+        Task<Books_By_AuthorDto> CreateBook_By_Author(Books_By_AuthorForCreationDto books_By_Author);
         Task DeleteBook_By_Author(int authorId, int bookId);
 
     }

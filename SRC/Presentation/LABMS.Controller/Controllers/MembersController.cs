@@ -1,5 +1,6 @@
 ﻿using LABMS.Application.DTOs.ForCreation;
 using LABMS.Application.DTOs.ForUpdate;
+using LABMS.Controller.ActionFilters;
 using LABMS.ServiceContract.Common;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,23 +40,21 @@ namespace LABMS.Controller.Controllers
 
         // POST api/<MembersController>
         [HttpPost]
-        public async Task<ActionResult> AddMember([FromBody] MemberForCreation memberToCreate)
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<ActionResult> AddMember([FromBody] MemberForCreationDto memberToCreate)
         {
-            if(memberToCreate == null)
-            {
-                return BadRequest("Input cannot be null");
-            }
-            var memberCreated = serviceManager.MemberService.CreateMember(memberToCreate);
+            var memberCreated = await serviceManager.MemberService.CreateMember(memberToCreate);
             return CreatedAtAction(nameof(GetMember),  new { id = memberCreated.MemberId }, memberCreated);
         }
 
         // PUT api/<MembersController>/5
-        [HttpPut()]
-        public async Task<ActionResult> Put([FromBody] MemberForUpdate memberForUpdate)
+        [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<ActionResult> Put(int id, [FromBody] MemberForUpdate memberForUpdate)
         {
-            if(memberForUpdate == null)
+            if(id.Equals(0))
             {
-                return BadRequest("Input cannot be null");
+                return BadRequest("id cannot be 0");
             }
             await serviceManager.MemberService.UpdateMember(memberForUpdate);
             return NoContent();

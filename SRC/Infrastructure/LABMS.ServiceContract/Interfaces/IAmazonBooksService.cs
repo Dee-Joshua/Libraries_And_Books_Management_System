@@ -13,7 +13,7 @@ namespace LABMS.ServiceContract.Interfaces
     {
         Task<IEnumerable<AmazonBooksDto>> GetAllAmazonBooksAsync(bool trackChanges);
         Task<AmazonBooksDto> GetAmazonBookByIdAsync(int id, bool trackChanges);
-        Task CreateAmazonBook(AmazonBooksForCreation amazonBooks);
+        Task CreateAmazonBook(AmazonBooksForCreationDto amazonBooks);
         Task UpdateAmazonBool(AmazonBooksForUpdate amazonBooks);
         Task DeleteAmazonBook(int bookId);
     }

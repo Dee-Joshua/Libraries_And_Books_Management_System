@@ -14,7 +14,7 @@ namespace LABMS.ServiceContract.Interfaces
     {
         Task<IEnumerable<MemberDto>> GetAllMembersAsync(bool trackChanges);
         Task<MemberDto> GetMemberById(int memberId, bool trackChanges);
-        MemberDto CreateMember(MemberForCreation member);
+        Task<MemberDto> CreateMember(MemberForCreationDto member);
         Task UpdateMember(MemberForUpdate member);
         Task DeleteMember(int memberId);
     }

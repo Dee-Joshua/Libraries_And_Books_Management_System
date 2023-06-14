@@ -9,28 +9,26 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForCreation
 {
-    public class MemberForCreation
+    public class MemberForCreationDto
     {
-        [ForeignKey(nameof(Address))]
-        public int Member_AddressId { get; set; }
-
         [Required(ErrorMessage = "Gender is required.")]
-        public string? Gender { get; set; }
+        public string? Gender { get; init; }
 
         [Required(ErrorMessage = "First name is required.")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "First name should be between 2 and 50 characters.")]
-        public string? FirstName { get; set; }
+        public string? FirstName { get; init; }
 
         [Required(ErrorMessage = "Last name is required.")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Last name should be between 2 and 50 characters.")]
-        public string? LastName { get; set; }
+        public string? LastName { get; init; }
 
         [Required(ErrorMessage = "Phone number is required.")]
         [DataType(DataType.PhoneNumber)]
-        public int PhoneNumber { get; set; }
+        public int PhoneNumber { get; init; }
 
         [Required(ErrorMessage = "Email address is required.")]
         [EmailAddress(ErrorMessage = "Invalid email address format.")]
-        public string? EmailAddress { get; set; }
+        public string? EmailAddress { get; init; }
+        public AddressForCreationDto? Address { get; init; }
     }
 }

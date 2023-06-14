@@ -1,4 +1,5 @@
 ﻿using LABMS.Application.DTOs.ForCreation;
+using LABMS.Controller.ActionFilters;
 using LABMS.ServiceContract.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -42,12 +43,9 @@ namespace LABMS.Controller.Controllers
 
         // POST api/<MembersController>
         [HttpPost]
-        public async Task<ActionResult> AddBook([FromBody] BookForCreation bookForCreation)
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<ActionResult> AddBook([FromBody] BookForCreationDto bookForCreation)
         {
-            if (bookForCreation == null)
-            {
-                return BadRequest("Input cannot be null");
-            }
             var bookCreated = await serviceManager.BookService.CreateBook(bookForCreation);
             return CreatedAtAction(nameof(GetBookById), new { id = bookCreated.Isbn }, bookCreated);
         }

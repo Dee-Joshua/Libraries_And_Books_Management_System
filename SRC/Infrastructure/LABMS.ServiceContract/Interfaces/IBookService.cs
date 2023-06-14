@@ -18,7 +18,7 @@ namespace LABMS.ServiceContract.Interfaces
         Task<IEnumerable<BookDto>> GetAllBooksRequestedByLibraryId(int libraryId, bool trackChanges);//pulls specific book in member_request
         Task<IEnumerable<BookDto>> GetAllBooksRequestedByMemberId(int memberId, bool trackChanges);//pulls books requested by member in member_request
         Task<IEnumerable<BookDto>> GetBooksByCategories(int categoryId, int bookId, bool trackChanges);
-        Task<BookDto> CreateBook(BookForCreation bookCreate);
+        Task<BookDto> CreateBook(BookForCreationDto bookCreate);
         //Task UpdateBook(BookForUpdate bookUpdate);
         Task DeleteBook(int id);
     }
