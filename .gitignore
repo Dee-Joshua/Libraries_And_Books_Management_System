@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/SRC/Presentation/LABMS.WebApi/appsettings.json
