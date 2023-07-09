@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  labms.webapi:
+    image: ${DOCKER_REGISTRY-}labmswebapi
+    build:
+      context: .
+      dockerfile: SRC\Presentation\LABMS.WebApi\Dockerfile

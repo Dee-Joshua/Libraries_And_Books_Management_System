@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Execution;
 using LABMS.Application.Common;
 using LABMS.Application.DTOs.ForCreation;
 using LABMS.Application.DTOs.ForDto;
@@ -8,11 +7,6 @@ using LABMS.Application.Exceptions;
 using LABMS.Domain.entities;
 using LABMS.ServiceContract.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Member = LABMS.Domain.entities.Member;
 
 namespace LABMS.ServiceRepository.Services
 {

@@ -41,7 +41,7 @@ namespace LABMS.ServiceRepository.Services
                 ?? throw new Book_By_AuthorNotFoundException(authorId, bookId);
             var book = authorBook.Where(x=>x.Isbn.Equals(bookId)).FirstOrDefault()
                 ?? throw new Book_By_AuthorNotFoundException();
-            _repositoryManager.BooksByAuthorRepository.DeleteBooks_By_Author(book);
+            _repositoryManager.BooksByAuthorRepository.DeleteBooks_By_Author(book);//Best practice is to check for the book in the Books table before deleting
             await _repositoryManager.SaveAsync();
         }
 

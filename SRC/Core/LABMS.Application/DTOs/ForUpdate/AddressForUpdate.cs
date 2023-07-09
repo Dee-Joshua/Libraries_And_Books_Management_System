@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LABMS.Application.DTOs.ForUpdate
 {
-    public class AddressForUpdate
+    public record AddressForUpdate
     {
 
         public int BaseId { get; set; }

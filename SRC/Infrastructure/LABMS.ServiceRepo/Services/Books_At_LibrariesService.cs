@@ -38,7 +38,7 @@ namespace LABMS.ServiceRepository.Services
             var bookLibrary = await _repositoryManager.BooksAtLibraryRepository
                 .GetBooks_At_LibraryByIdAsync(bookId, libraryId, false)
                 ?? throw new Book_At_LibraryNotFoundException(bookId,libraryId);
-            _repositoryManager.BooksAtLibraryRepository.DeleteBooks_At_Library(bookLibrary);
+            _repositoryManager.BooksAtLibraryRepository.DeleteBooks_At_Library(bookLibrary);//Best practice is to check for the book in the Books table before deleting
             await _repositoryManager.SaveAsync();
         }
 

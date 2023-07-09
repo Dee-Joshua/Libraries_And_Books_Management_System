@@ -35,7 +35,7 @@ namespace LABMS.ServiceRepository.Services
         public async Task DeleteBook(int id)
         {
             var book = await CheckIfBookExistAndReturnBook(id, false);
-            _repositoryManager.BookRepository.DeleteBook(book);
+            _repositoryManager.BookRepository.DeleteBook(book);//Need to also delete book for author and book at library 
             await _repositoryManager.SaveAsync();
         }
 
